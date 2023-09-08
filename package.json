@@ -18,11 +18,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/graphql": "^14.5.0",
     "eslint": "8.21.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
     "nodemon": "2.0.19",
-    "prettier": "2.7.1"
+    "prettier": "2.7.1",
+    "server": "link:@types/apollo/server"
   },
   "dependencies": {
     "@apollo/server": "^4.9.3",
