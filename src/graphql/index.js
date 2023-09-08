@@ -7,11 +7,17 @@ const {
 
 const typeDefs = `type Query{
   hello: String
+  getPerson(name: String, age : Int): String
 }`;
+
+// GET = Query
+// POST, PUT, PATCH, DELETE = mutations
 
 const resolvers = {
   Query: {
     hello: () => 'Hola Mundo',
+    getPerson: (_, args) =>
+      `Hello, my name is ${args.name}, I'm ${args.age} years old`,
   },
 };
 
