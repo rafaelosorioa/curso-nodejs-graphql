@@ -4,38 +4,7 @@ const {
   ApolloServerPluginLandingPageLocalDefault,
   ApolloServerPluginLandingPageProductionDefault,
 } = require('@apollo/server/plugin/landingPage/default');
-
-// Scalar types define types and resolver for said types
-// Added ! to avoid null values
-// Define a new Object type
-
-const typeDefs = `
-  type Query{
-    hello: String!
-    getPerson(name: String, age : Int): String
-    getInt(age: Int!): Int
-    getFloat: Float
-    getString: String
-    getBoolean: Boolean
-    getID: ID
-    getNumbers(numbers: [Int!]!): [Int]
-    getProduct: Product
-  }
-
-  type Product {
-    id: ID!
-    name: String!
-    price: Float!
-    description: String!
-    image: String!
-    createdAt: String!
-
-  }
-`;
-
-// List definition for graphql
-// [Int]
-// [String]
+const { loadFiles } = require('@graphql-tools/load-files');
 
 // GET = Query
 // POST, PUT, PATCH, DELETE = mutations
@@ -64,7 +33,7 @@ const resolvers = {
 
 const useGraphql = async (app) => {
   const server = new ApolloServer({
-    typeDefs,
+    typeDefs: await loadFiles('./src/**/**/*.graphql'),
     resolvers,
     plugins: [
       ApolloServerPluginLandingPageProductionDefault,
