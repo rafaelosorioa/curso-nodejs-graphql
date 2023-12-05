@@ -5,9 +5,15 @@ const {
   ApolloServerPluginLandingPageProductionDefault,
 } = require('@apollo/server/plugin/landingPage/default');
 
+// Scalar types define types and resolver for said types
 const typeDefs = `type Query{
   hello: String
   getPerson(name: String, age : Int): String
+  getInt: Int
+  getFloat: Float
+  getString: String
+  getBoolean: Boolean
+  getID: ID
 }`;
 
 // GET = Query
@@ -18,6 +24,11 @@ const resolvers = {
     hello: () => 'Hola Mundo',
     getPerson: (_, args) =>
       `Hello, my name is ${args.name}, I'm ${args.age} years old`,
+    getInt: () => 1,
+    getFloat: () => 1.1,
+    getString: () => 'Hello World',
+    getBoolean: () => true,
+    getID: () => '12121212',
   },
 };
 
