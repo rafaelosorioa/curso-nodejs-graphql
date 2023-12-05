@@ -15,7 +15,10 @@ type Query {
   getBoolean: Boolean
   getID: ID
   getNumbers(numbers: [Int!]!): [Int]
-  getProduct: Product
+
+  #Product types
+  product(id: ID!): Product
+  products: [Product!]!
 }
 
 # Define product type
