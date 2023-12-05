@@ -6,15 +6,21 @@ const {
 } = require('@apollo/server/plugin/landingPage/default');
 
 // Scalar types define types and resolver for said types
+// Added ! to avoid null values
 const typeDefs = `type Query{
-  hello: String
+  hello: String!
   getPerson(name: String, age : Int): String
-  getInt: Int
+  getInt(age: Int!): Int
   getFloat: Float
   getString: String
   getBoolean: Boolean
   getID: ID
+  getNumbers(numbers: [Int!]!): [Int]
 }`;
+
+// List definition for graphql
+// [Int]
+// [String]
 
 // GET = Query
 // POST, PUT, PATCH, DELETE = mutations
@@ -24,11 +30,12 @@ const resolvers = {
     hello: () => 'Hola Mundo',
     getPerson: (_, args) =>
       `Hello, my name is ${args.name}, I'm ${args.age} years old`,
-    getInt: () => 1,
+    getInt: (_, args) => args.age,
     getFloat: () => 1.1,
     getString: () => 'Hello World',
     getBoolean: () => true,
     getID: () => '12121212',
+    getNumbers: (_, args) => args.numbers,
   },
 };
 
@@ -45,7 +52,7 @@ const useGraphql = async (app) => {
   app.use(
     '/graphql',
     expressMiddleware(server, {
-      context: async ({ req }) => ({ token: req.headers.token }),
+      context: ({ req }) => ({ token: req.headers.token }),
     })
   );
 };
