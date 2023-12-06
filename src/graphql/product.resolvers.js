@@ -16,4 +16,20 @@ const addProduct = async (_, { dto }) => {
   return newProduct;
 };
 
-module.exports = { getProduct, getProducts, addProduct };
+const updateProduct = async (_, { id, dto }) => {
+  const updatedProduct = await productService.update(id, dto);
+  return updatedProduct;
+};
+
+const deleteProduct = async (_, { id }) => {
+  const deletedProduct = await productService.delete(id);
+  return deletedProduct.id;
+};
+
+module.exports = {
+  getProduct,
+  getProducts,
+  addProduct,
+  updateProduct,
+  deleteProduct,
+};
