@@ -6,6 +6,7 @@ const {
   deleteProduct,
 } = require('./product.resolvers');
 const { login } = require('./auth.resolvers');
+const { addCategory } = require('./category.resolvers');
 
 // GET = Query
 // POST, PUT, PATCH, DELETE = mutations
@@ -31,6 +32,7 @@ const resolvers = {
     addProduct,
     updateProduct,
     deleteProduct,
+    addCategory,
   },
 };
 
