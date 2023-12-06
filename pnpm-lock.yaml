@@ -35,6 +35,9 @@ dependencies:
   graphql-passport:
     specifier: ^0.6.7
     version: 0.6.7(passport@0.6.0)
+  graphql-scalars:
+    specifier: ^1.22.4
+    version: 1.22.4(graphql@16.8.0)
   joi:
     specifier: 17.6.0
     version: 17.6.0
@@ -1544,6 +1547,16 @@ packages:
       - bufferutil
       - supports-color
       - utf-8-validate
+    dev: false
+
+  /graphql-scalars@1.22.4(graphql@16.8.0):
+    resolution: {integrity: sha512-ILnv7jq5VKHLUyoaTFX7lgYrjCd6vTee9i8/B+D4zJKJT5TguOl0KkpPEbXHjmeor8AZYrVsrYUHdqRBMX1pjA==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      graphql: 16.8.0
+      tslib: 2.6.2
     dev: false
 
   /graphql@15.8.0:
