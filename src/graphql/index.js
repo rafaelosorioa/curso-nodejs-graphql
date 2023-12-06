@@ -5,6 +5,8 @@ const {
   ApolloServerPluginLandingPageProductionDefault,
 } = require('@apollo/server/plugin/landingPage/default');
 const { loadFiles } = require('@graphql-tools/load-files');
+const { buildContext } = require('graphql-passport');
+
 const resolvers = require('./resolvers');
 
 const useGraphql = async (app) => {
@@ -21,7 +23,7 @@ const useGraphql = async (app) => {
   app.use(
     '/graphql',
     expressMiddleware(server, {
-      context: ({ req }) => ({ token: req.headers.token }),
+      context: ({ req, res }) => buildContext({ req, res }),
     })
   );
 };
