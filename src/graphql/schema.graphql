@@ -39,8 +39,21 @@ type Category {
   image: String!
 }
 
+type User {
+  id: ID!
+  email: String!
+  role: String!
+  createdAt: String!
+}
+
+type AuthResponse {
+  access_token: String!
+  user: User!
+}
+
 #Mutation
 type Mutation {
+  login(email: String!, password: String!): AuthResponse
   addProduct(dto: CreateProductInput!): Product
   updateProduct(id: ID!, dto: UpdateProductInput!): Product
   deleteProduct(id: ID!): ID
