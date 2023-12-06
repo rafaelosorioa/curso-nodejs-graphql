@@ -19,6 +19,10 @@ type Query {
   #Product types
   product(id: ID!): Product
   products: [Product!]!
+
+  #Category
+  category(id: ID!): Category
+  categories: [Category]
 }
 
 # Define product type
@@ -37,6 +41,7 @@ type Category {
   id: ID!
   name: String!
   image: String!
+  products: [Product!]!
 }
 
 type User {
