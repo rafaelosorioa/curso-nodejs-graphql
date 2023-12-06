@@ -7,6 +7,12 @@ const {
 } = require('./product.resolvers');
 const { login } = require('./auth.resolvers');
 const { addCategory } = require('./category.resolvers');
+const { RegularExpression } = require('graphql-scalars');
+
+const CategoryNameType = new RegularExpression(
+  'CategoryNameType',
+  /^[a-zA-Z]{3,8}$/
+);
 
 // GET = Query
 // POST, PUT, PATCH, DELETE = mutations
@@ -34,6 +40,7 @@ const resolvers = {
     deleteProduct,
     addCategory,
   },
+  CategoryNameType,
 };
 
 module.exports = resolvers;
